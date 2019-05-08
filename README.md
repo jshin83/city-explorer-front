@@ -11,4 +11,4 @@ Start time: 930am
 
 Finish time: 1130am
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1030
