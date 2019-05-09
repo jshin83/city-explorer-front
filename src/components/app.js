@@ -3,14 +3,15 @@ import Header from './header.js';
 import SearchResults from './search-results.js';
 import SearchForm from './search-form.js';
 import Map from './map.js';
-
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       location: {}, 
       latitude: 0, 
-      longitude: 0
+      longitude: 0,
+        
+      // mapUrl: "https://maps.googleapis.com/maps/api/staticmap?center=" + `${this.latitude}` + "%2c%20$" + `${this.longitude}` + "&zoom=13&size=600x300&maptype=roadmap&key=" + `${process.env.GEOCODE_API_KEY}`
     };
   }
 
@@ -26,7 +27,7 @@ class App extends React.Component {
       <React.Fragment>
         <Header />
         <SearchForm handleLocation={this.handleLocation}/>
-        <Map />
+        <Map mapQuery={"https://maps.googleapis.com/maps/api/staticmap?center=" + `${this.state.latitude}` + "%2c%20" + `${this.state.longitude}` + "&zoom=13&size=600x300&maptype=roadmap&key=" + `${process.env.REACT_APP_GEOCODE_API_KEY}`}/>
         <SearchResults />
       </React.Fragment>
     );
