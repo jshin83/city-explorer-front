@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from './Header.js';
-import Main from './Main.js';
+import Header from './header.js/index.js';
+import SearchResults from './search-results.js/index.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,7 +14,9 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <Header />
-        <Main />
+        <SearchForm />
+        <Map />
+        <SearchResults />
       </React.Fragment>
     );
   }
