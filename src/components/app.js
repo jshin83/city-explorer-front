@@ -14,8 +14,8 @@ class App extends React.Component {
     };
   }
 
-  handleLocation = (location, result) => {
-    this.setState({location});
+  handleLocation = (result) => {
+    this.setState({location: result.search_query});
     console.log('in app', result);
     this.setState({latitude: result.latitude});
     this.setState({longitude: result.longitude})

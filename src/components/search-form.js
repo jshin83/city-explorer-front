@@ -18,7 +18,7 @@ class SearchForm extends React.Component {
     e.preventDefault();
     let location = this.state.queryData;
     console.log(this.state.queryData);
-    let data = await superagent.get('https://calm-taiga-81023.herokuapp.com/location').query({ data: `${this.state.queryData}` }).then(result => this.props.handleLocation(this.state.queryData, result.body));
+    let data = await superagent.get('https://calm-taiga-81023.herokuapp.com/location').query({ data: `${this.state.queryData}` }).then(result => this.props.handleLocation(result.body));
     //this.props.handleLocation(this.state.queryData, data);
 
     //let results = data.body.results;  
