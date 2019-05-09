@@ -4,7 +4,7 @@ class SearchForm extends React.Component {
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.props.handleLocation}>
         <input />Search for a location
         <button>Explore!</button>
       </form>
