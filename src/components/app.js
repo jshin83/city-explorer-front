@@ -8,10 +8,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       location: {}, 
-      latitude: 0, 
-      longitude: 0,
-        
-      // mapUrl: "https://maps.googleapis.com/maps/api/staticmap?center=" + `${this.latitude}` + "%2c%20$" + `${this.longitude}` + "&zoom=13&size=600x300&maptype=roadmap&key=" + `${process.env.GEOCODE_API_KEY}`
+      latitude: 47.6062095, 
+      longitude: -122.3320708
     };
   }
 
@@ -25,10 +23,10 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Header />
-        <SearchForm handleLocation={this.handleLocation}/>
-        <Map mapQuery={"https://maps.googleapis.com/maps/api/staticmap?center=" + `${this.state.latitude}` + "%2c%20" + `${this.state.longitude}` + "&zoom=13&size=600x300&maptype=roadmap&key=" + `${process.env.REACT_APP_GEOCODE_API_KEY}`}/>
-        <SearchResults />
+        <Header titlePrompt="City Explorer" headerPrompt="Enter a location below to learn about the weather, events, restaurants, movies filmed there, and more!"/>
+        <SearchForm handleLocation={this.handleLocation} prompt="Search for a location" buttonPrompt="Explore!" />
+        <Map mapQuery={`https://maps.googleapis.com/maps/api/staticmap?center=${this.state.latitude}%2c%20${this.state.longitude}&zoom=13&size=600x300&maptype=roadmap&key=${process.env.REACT_APP_GEOCODE_API_KEY}`} mapAlt={this.state.location} />
+        <SearchResults lat={this.state.latitude} long={this.state.longitude} />
       </React.Fragment>
     );
   }
