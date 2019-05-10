@@ -1,32 +1,21 @@
 import React from 'react';
 import superagent from 'superagent';
 class SearchResults extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      
-    };
-  }
 
   render() {
     return (
       <section>
-        <Weather lat ={this.props.lat} long={this.props.long} />
-        <Yelp lat={this.props.lat} long={this.props.long} />
-        <Event location={this.props.location} />
-        <MovieDB lat={this.props.lat} long={this.props.long} />
-        <Trail lat={this.props.lat}long={this.props.long} />
+        <Weather weather={this.props.weather} />
+        <Yelp yelp={this.props.yelp} />
+        <Event events={this.props.events} />
+        <MovieDB movies={this.props.movies} />
+        <Trail />
       </section>
     );
   }
 }
 
 class Event extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      results: {}
-    }
 // `https://www.eventbriteapi.com/v3/events/search?location.longitude=${request.query.data.longitude}&location.latitude=${request.query.data.latitude}&expand=venue&token=${process.env.EVENTBRITE_API_KEY}`
     // let data = superagent.get('https://calm-taiga-81023.herokuapp.com/events')
     //   .query( { data: `${this.props.location}` })
@@ -39,13 +28,29 @@ class Event extends React.Component {
       //   }, {});
       // }).then( list => this.setState( {list}));
 
-  }
+      // render() {
+      //   const allWeather = this.props.darkSky.map((forecast, i) => {
+      //     return (
+      //         <
+      //         key={i}
+      //         forecast={forecast}
+      //         />
+      //     )
+      //   })
+      
 
-  render() {
+    render() {
+        console.log('event component', this.props.events);
     return (
-      <section>
-        <ul>Hi.</ul>
-      </section>
+      <ul>
+        {Object.keys(this.props.events).map((key, idx, array) => {
+          return (
+            <li key={idx}>
+              <a href={`${array[idx]['link']}`}>{key}</a>
+            </li>
+          );
+        })}
+      </ul>
     );
   }
 }
@@ -54,8 +59,9 @@ class MovieDB extends React.Component {
   // constructor(props) {
   //   super(props);
   //   this.state = {
-
+  //     movies: this.props.movies
   //   }
+  // };
 
   //   let data = await superagent.get('https://calm-taiga-81023.herokuapp.com/movies');
   //   let movies = data.body.results.reduce((list, movie) => {
@@ -64,11 +70,19 @@ class MovieDB extends React.Component {
   //   }, {});
   // }
   render() {
+    let allMovies = [];
+    if(this.props.movies) {
+      allMovies = this.props.movies.map((movie, i) => {
+        return (
+          <li key={i}>{movie.title}</li>
+        )
+      })
+    }
     return (
-      <section>
-        <ul>Hi.</ul>
-      </section>
-    );
+      <ul>
+        {allMovies}
+      </ul>
+    )
   }
 }
 

@@ -27,25 +27,30 @@ class App extends React.Component {
     this.handleAPICalls();
   }
 
-  handleAPICalls = () => {
-    this.getResource('weather');
-    this.getResource('movies');
-    this.getResource('yelp');
-    this.getResource('trails');
-    this.getResource('events');
+  handleAPICalls = async () => {
+    let weatherData = await this.getResource('weather'); //.then(results => console.log('in weather returned', results));//this.setState( { weather: results.body }));
+    let movieData = await this.getResource('movies');//this.setState( { movies: results.body }));
+    let yelpData = await this.getResource('yelp'); //this.setState( { yelp: results.body }));
+    let eventData = await this.getResource('events');//this.setState( { events: results.body }));
+    this.setState( { weather: weatherData} );
+    this.setState( { movies: movieData} );
+    this.setState( { events: eventData} );
+    this.setState( { yelp: yelpData} );
+
+
   }
 
   getResource = async (resource) => {
     console.log('in get event api call ', this.state.location);
-    await superagent.get(`${SERVER}/${resource}`)
-    .query( { data: { location: this.state.location, latitude: this.state.latitude, longitude: this.state.longitude} })
+    let data = await superagent.get(`${SERVER}/${resource}`)
+    .query( { data: { search_query: this.state.location, latitude: this.state.latitude, longitude: this.state.longitude} })
     .then( results => {
-      console.log('in EVENTS', results);
+      console.log('in', resource, results.body);
+      //this.setState( { this.state.resource: results.body });
+      return results.body;
     });
-  }
-
-  getWeather = async () => {
-    await superagent.get()
+    //this.setState( { state.resource : data });
+    return data;
   }
 
   render() {
@@ -54,7 +59,7 @@ class App extends React.Component {
         <Header titlePrompt="City Explorer" headerPrompt="Enter a location below to learn about the weather, events, restaurants, movies filmed there, and more!"/>
         <SearchForm handleLocation={this.handleLocation} prompt="Search for a location" buttonPrompt="Explore!" />
         <Map mapQuery={`https://maps.googleapis.com/maps/api/staticmap?center=${this.state.latitude}%2c%20${this.state.longitude}&zoom=13&size=600x300&maptype=roadmap&key=${process.env.REACT_APP_GEOCODE_API_KEY}`} mapAlt={this.state.location} />
-        <SearchResults location= {this.state.location} lat={this.state.latitude} long={this.state.longitude} />
+        <SearchResults weather= {this.state.weather} events={this.state.events} movies={this.state.movies} yelp={this.state.yelp} />
       </React.Fragment>
     );
   }
