@@ -9,7 +9,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: "", 
+      location: '',
+      formatted: '', 
       latitude: 47.6062095, 
       longitude: -122.3320708,
       weather: [],
@@ -20,7 +21,7 @@ class App extends React.Component {
   }
 
   handleLocation = (result) => {
-    this.setState({location: result.search_query});
+    this.setState( { location: result.search_query, formatted: result.formatted_query } );
     console.log('in app', result);
     this.setState({latitude: result.latitude});
     this.setState({longitude: result.longitude})
@@ -43,7 +44,7 @@ class App extends React.Component {
   getResource = async (resource) => {
     console.log('in get event api call ', this.state.location);
     let data = await superagent.get(`${SERVER}/${resource}`)
-    .query( { data: { search_query: this.state.location, latitude: this.state.latitude, longitude: this.state.longitude} })
+    .query( { data: { search_query: this.state.location, formatted_query: this.state.formatted, latitude: this.state.latitude, longitude: this.state.longitude } })
     .then( results => {
       console.log('in', resource, results.body);
       //this.setState( { this.state.resource: results.body });
