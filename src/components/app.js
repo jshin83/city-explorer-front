@@ -46,7 +46,7 @@ class App extends React.Component {
     let data = await superagent.get(`${SERVER}/${resource}`)
     .query( { data: { search_query: this.state.location, formatted_query: this.state.formatted, latitude: this.state.latitude, longitude: this.state.longitude } })
     .then( results => {
-      console.log('in', resource, results.body);
+      console.log('in', resource, results);
       //this.setState( { this.state.resource: results.body });
       return results.body;
     });
