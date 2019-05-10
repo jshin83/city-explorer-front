@@ -1,0 +1,38 @@
+body {
+  position: relative;
+}
+
+main {
+  border: solid 2px $black;
+  padding: $gutter_std / 2;
+  min-height: 100px;
+}
+
+form {
+  text-align: $center;
+  padding: $gutter_std $gutter_std;
+}
+
+body > div > img:nth-child(3) {
+  display: block;
+  margin: $none auto;
+}
+
+section {
+  display: inline-flex;
+  flex-flow: row;
+  width: 95%;
+}
+
+section img {
+  height: $pic-height;
+  width: $pic-width;
+}
+
+section h2 {
+  text-align: $center;
+}
+
+section div {
+  width: $twenty-three;
+}

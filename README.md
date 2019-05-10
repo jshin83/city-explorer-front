@@ -1,3 +1,17 @@
+# Lab 14
+Number and name of feature: 
+1. Help others make their front end functional
+2. Implement SCSS
+3. Style front end
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 945am (was helping others debug their lab13)
+
+Finish time: 1145am
+
+Actual time needed to complete: 1130am
+
 # Lab 13
 Number and name of feature: 
 1. Re-package the components created previously into their own files
