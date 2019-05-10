@@ -1,0 +1,78 @@
+h1 {
+  font-family: $cursive;
+  font-size: $font-big;
+  padding: $gutter_std;
+  margin: $gutter_std;
+}
+
+h2 {
+  background: $home_bg;
+  padding: $gutter_std * 2 $gutter_std * 2;
+  font-family: $cursive;
+  font-size: $font-medium;
+}
+
+p, input, form {
+  font-family: $p-style;
+  font-size: $font-medium;
+}
+
+input {
+  border-radius: $rounded;
+  font-family: $input-font;
+  font-size: $font-small;
+  font-weight: $bold;
+  padding: $gutter_std * 2;
+}
+
+button {
+  font-family: $sofia-cursive;
+  font-size: $font-medium / 2;
+  padding: $gutter_std / 3 $gutter_std / 4;
+  border-radius: $rounded;
+  background-color: $green;
+}
+button:hover {
+  background-color: $dark-green;
+  color: $white;
+}
+
+ul {
+  background: $home_bg / 2;
+  font-family: $sofia-cursive;
+  @extend h2;
+
+  li {
+    padding: $gutter_std / 2 $gutter_std / 4;
+    background: $white;
+    border-radius: $rounded / 2;
+    font-size: $font-medium / 2;
+    transition: $animation_time all;
+
+    &:hover {
+        background: $black;
+        color: $white;
+    }
+  }
+  
+  a:hover {
+    color: $white;
+  }
+}
+
+p, input, form, img, section {
+  padding: $none $gutter_std/2;
+  margin: $gutter_std $gutter_std;
+}
+
+main {
+  > div {
+      background: $black;
+      color: $white;
+      padding: $gutter_std / 2;
+  }
+}
+
+section ul li:nth-child(2), li:nth-child(3) {
+  font-family: $p-style;
+}
