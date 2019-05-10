@@ -1,4 +1,4 @@
-# lab 13
+# Lab 13
 Number and name of feature: 
 1. Re-package the components created previously into their own files
 2. Import/export those files accordingly
@@ -29,4 +29,4 @@ Start time: 930am
 
 Finish time: 1130am
 
-Actual time needed to complete: 1030
+Actual time needed to complete: 1.5 hours
